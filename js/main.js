@@ -34,7 +34,13 @@ let names = document.querySelectorAll(".product-name")
 let allData = [] // Main data array
 let currentRow // Store current row for editing
 
-
+//search
+inpSearch.addEventListener("keyup", () => {
+  const value = inpSearch.value.toLowerCase(); //ignor capital  
+  const filteredData = allData.filter(el => el.name.toLowerCase().includes(value));
+  tbody.innerHTML = "";
+  filteredData.forEach(el => createData(el));
+});
 // Show add  card
 btnAddCard.addEventListener("click", () => {
   pop.style.cssText = "opacity:1;  transform: translate(-50%,100px )scale(1);z-index:1"
